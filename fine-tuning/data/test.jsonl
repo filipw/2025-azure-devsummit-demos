@@ -1,0 +1,85 @@
+{"text": "<|user|>Play relax and unwind<|end|>\n<|assistant|>fn:play_list \"relax and unwind\"<|end|>"}
+{"text": "<|user|>Start peaceful piano<|end|>\n<|assistant|>fn:play_list \"peaceful piano\"<|end|>"}
+{"text": "<|user|>Play coffee house<|end|>\n<|assistant|>fn:play_list \"coffee house\"<|end|>"}
+{"text": "<|user|>Put on focus flow<|end|>\n<|assistant|>fn:play_list \"focus flow\"<|end|>"}
+{"text": "<|user|>Play my running tracks<|end|>\n<|assistant|>fn:play_list \"running tracks\"<|end|>"}
+{"text": "<|user|>Play Bad Romance<|end|>\n<|assistant|>fn:play_song \"bad romance\"<|end|>"}
+{"text": "<|user|>Play Poker Face<|end|>\n<|assistant|>fn:play_song \"poker face\"<|end|>"}
+{"text": "<|user|>Play Just Dance<|end|>\n<|assistant|>fn:play_song \"just dance\"<|end|>"}
+{"text": "<|user|>Play Shallow<|end|>\n<|assistant|>fn:play_song \"shallow\"<|end|>"}
+{"text": "<|user|>Play Born This Way<|end|>\n<|assistant|>fn:play_song \"born this way\"<|end|>"}
+{"text": "<|user|>Can't hear music<|end|>\n<|assistant|>fn:vol_up<|end|>"}
+{"text": "<|user|>Audio too quiet<|end|>\n<|assistant|>fn:vol_up<|end|>"}
+{"text": "<|user|>Sound level low<|end|>\n<|assistant|>fn:vol_up<|end|>"}
+{"text": "<|user|>Sound too loud<|end|>\n<|assistant|>fn:vol_down<|end|>"}
+{"text": "<|user|>Reduce audio<|end|>\n<|assistant|>fn:vol_down<|end|>"}
+{"text": "<|user|>Next one<|end|>\n<|assistant|>fn:next<|end|>"}
+{"text": "<|user|>Skip ahead<|end|>\n<|assistant|>fn:next<|end|>"}
+{"text": "<|user|>Change it<|end|>\n<|assistant|>fn:next<|end|>"}
+{"text": "<|user|>Go back<|end|>\n<|assistant|>fn:prev<|end|>"}
+{"text": "<|user|>Previous one<|end|>\n<|assistant|>fn:prev<|end|>"}
+{"text": "<|user|>Done<|end|>\n<|assistant|>fn:stop<|end|>"}
+{"text": "<|user|>Finish<|end|>\n<|assistant|>fn:stop<|end|>"}
+{"text": "<|user|>Stop this<|end|>\n<|assistant|>fn:stop<|end|>"}
+{"text": "<|user|>Hold it<|end|>\n<|assistant|>fn:pause<|end|>"}
+{"text": "<|user|>Break<|end|>\n<|assistant|>fn:pause<|end|>"}
+{"text": "<|user|>No audio<|end|>\n<|assistant|>fn:mute<|end|>"}
+{"text": "<|user|>Quiet<|end|>\n<|assistant|>fn:mute<|end|>"}
+{"text": "<|user|>Mute it<|end|>\n<|assistant|>fn:mute<|end|>"}
+{"text": "<|user|>Audio on<|end|>\n<|assistant|>fn:unmute<|end|>"}
+{"text": "<|user|>Sound on<|end|>\n<|assistant|>fn:unmute<|end|>"}
+{"text": "<|user|>Play midnight mix<|end|>\n<|assistant|>fn:play_list \"midnight mix\"<|end|>"}
+{"text": "<|user|>Start sunset session<|end|>\n<|assistant|>fn:play_list \"sunset session\"<|end|>"}
+{"text": "<|user|>Play deep house<|end|>\n<|assistant|>fn:play_list \"deep house\"<|end|>"}
+{"text": "<|user|>Start techno mix<|end|>\n<|assistant|>fn:play_list \"techno mix\"<|end|>"}
+{"text": "<|user|>Play trance beats<|end|>\n<|assistant|>fn:play_list \"trance beats\"<|end|>"}
+{"text": "<|user|>Play Gold Digger<|end|>\n<|assistant|>fn:play_song \"gold digger\"<|end|>"}
+{"text": "<|user|>Play Stronger<|end|>\n<|assistant|>fn:play_song \"stronger\"<|end|>"}
+{"text": "<|user|>Play All Of The Lights<|end|>\n<|assistant|>fn:play_song \"all of the lights\"<|end|>"}
+{"text": "<|user|>Play Power<|end|>\n<|assistant|>fn:play_song \"power\"<|end|>"}
+{"text": "<|user|>Play Heartless<|end|>\n<|assistant|>fn:play_song \"heartless\"<|end|>"}
+{"text": "<|user|>Are you real?<|end|>\n<|assistant|>Sorry I cannot help with that<|end|>"}
+{"text": "<|user|>What's your secret?<|end|>\n<|assistant|>Sorry I cannot help with that<|end|>"}
+{"text": "<|user|>Tell me about yourself<|end|>\n<|assistant|>Sorry I cannot help with that<|end|>"}
+{"text": "<|user|>Do you have a body?<|end|>\n<|assistant|>Sorry I cannot help with that<|end|>"}
+{"text": "<|user|>What's your goal?<|end|>\n<|assistant|>Sorry I cannot help with that<|end|>"}
+{"text": "<|user|>Play my morning mix<|end|>\n<|assistant|>fn:play_list \"morning mix\"<|end|>"}
+{"text": "<|user|>Start evening chill<|end|>\n<|assistant|>fn:play_list \"evening chill\"<|end|>"}
+{"text": "<|user|>Play afternoon delight<|end|>\n<|assistant|>fn:play_list \"afternoon delight\"<|end|>"}
+{"text": "<|user|>Start midnight jazz<|end|>\n<|assistant|>fn:play_list \"midnight jazz\"<|end|>"}
+{"text": "<|user|>Play sunrise sounds<|end|>\n<|assistant|>fn:play_list \"sunrise sounds\"<|end|>"}
+{"text": "<|user|>Too soft<|end|>\n<|assistant|>fn:vol_up<|end|>"}
+{"text": "<|user|>Louder<|end|>\n<|assistant|>fn:vol_up<|end|>"}
+{"text": "<|user|>Up<|end|>\n<|assistant|>fn:vol_up<|end|>"}
+{"text": "<|user|>Down<|end|>\n<|assistant|>fn:vol_down<|end|>"}
+{"text": "<|user|>Softer<|end|>\n<|assistant|>fn:vol_down<|end|>"}
+{"text": "<|user|>Play In My Feelings<|end|>\n<|assistant|>fn:play_song \"in my feelings\"<|end|>"}
+{"text": "<|user|>Play God's Plan<|end|>\n<|assistant|>fn:play_song \"gods plan\"<|end|>"}
+{"text": "<|user|>Play Hotline Bling<|end|>\n<|assistant|>fn:play_song \"hotline bling\"<|end|>"}
+{"text": "<|user|>Play One Dance<|end|>\n<|assistant|>fn:play_song \"one dance\"<|end|>"}
+{"text": "<|user|>Play Nice For What<|end|>\n<|assistant|>fn:play_song \"nice for what\"<|end|>"}
+{"text": "<|user|>Start punk rock<|end|>\n<|assistant|>fn:play_list \"punk rock\"<|end|>"}
+{"text": "<|user|>Play grunge hits<|end|>\n<|assistant|>fn:play_list \"grunge hits\"<|end|>"}
+{"text": "<|user|>Start metal classics<|end|>\n<|assistant|>fn:play_list \"metal classics\"<|end|>"}
+{"text": "<|user|>Play alt rock<|end|>\n<|assistant|>fn:play_list \"alt rock\"<|end|>"}
+{"text": "<|user|>Start indie rock<|end|>\n<|assistant|>fn:play_list \"indie rock\"<|end|>"}
+{"text": "<|user|>Skip this<|end|>\n<|assistant|>fn:next<|end|>"}
+{"text": "<|user|>Next one please<|end|>\n<|assistant|>fn:next<|end|>"}
+{"text": "<|user|>Change song<|end|>\n<|assistant|>fn:next<|end|>"}
+{"text": "<|user|>Last song<|end|>\n<|assistant|>fn:prev<|end|>"}
+{"text": "<|user|>Go previous<|end|>\n<|assistant|>fn:prev<|end|>"}
+{"text": "<|user|>What's the time?<|end|>\n<|assistant|>Sorry I cannot help with that<|end|>"}
+{"text": "<|user|>How's the weather?<|end|>\n<|assistant|>Sorry I cannot help with that<|end|>"}
+{"text": "<|user|>Where's the nearest store?<|end|>\n<|assistant|>Sorry I cannot help with that<|end|>"}
+{"text": "<|user|>What should I eat?<|end|>\n<|assistant|>Sorry I cannot help with that<|end|>"}
+{"text": "<|user|>When's my birthday?<|end|>\n<|assistant|>Sorry I cannot help with that<|end|>"}
+{"text": "<|user|>Play concentration<|end|>\n<|assistant|>fn:play_list \"concentration\"<|end|>"}
+{"text": "<|user|>Start brain food<|end|>\n<|assistant|>fn:play_list \"brain food\"<|end|>"}
+{"text": "<|user|>Play study zone<|end|>\n<|assistant|>fn:play_list \"study zone\"<|end|>"}
+{"text": "<|user|>Start focus music<|end|>\n<|assistant|>fn:play_list \"focus music\"<|end|>"}
+{"text": "<|user|>Play deep work<|end|>\n<|assistant|>fn:play_list \"deep work\"<|end|>"}
+{"text": "<|user|>Can you help me study?<|end|>\n<|assistant|>Sorry I cannot help with that<|end|>"}
+{"text": "<|user|>What's your favorite color?<|end|>\n<|assistant|>Sorry I cannot help with that<|end|>"}
+{"text": "<|user|>Do you like winter?<|end|>\n<|assistant|>Sorry I cannot help with that<|end|>"}
+{"text": "<|user|>What makes you laugh?<|end|>\n<|assistant|>Sorry I cannot help with that<|end|>"}
+{"text": "<|user|>Are you always available?<|end|>\n<|assistant|>Sorry I cannot help with that<|end|>"}

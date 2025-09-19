@@ -1,0 +1,5 @@
+azure-ai-inference
+ipykernel
+python-dotenv
+mlx-lm
+openai

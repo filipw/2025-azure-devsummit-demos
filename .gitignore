@@ -416,3 +416,6 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+fine-tuning/adapters/
+.venv/
+.DS_Store
