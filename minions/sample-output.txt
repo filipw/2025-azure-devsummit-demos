@@ -1,0 +1,63 @@
+==================================================
+      MINIONS Protocol Demo (Quantum Mechanics)
+==================================================
+
+User Query: List the key contributions of Max Planck, Albert Einstein, and Niels Bohr to quantum mechanics, including the years of their discoveries.
+
+--- Step 1: Job Preparation (RemoteLM) ---
+RemoteLM is creating simple, targeted jobs based on the user query.
+Jobs created: ['Find the contribution of Max Planck and the year it was made.', 'Find the contribution of Albert Einstein and the year it was made.', 'Find the contribution of Niels Bohr and the year it was made.', 'Identify who developed matrix mechanics and in what year.', 'Identify who developed wave mechanics and in what year.']
+
+--- Step 2: Job Execution (LocalLM) ---
+Loading local model from mlx-community/Phi-4-mini-instruct-8bit...
+Document split into 4 chunks.
+  - SUCCESS: Found relevant result in chunk 1!
+  - SUCCESS: Found relevant result in chunk 1!
+  - SUCCESS: Found relevant result in chunk 1!
+  - SUCCESS: Found relevant result in chunk 1!
+  - SUCCESS: Found relevant result in chunk 1!
+  - SUCCESS: Found relevant result in chunk 2!
+  - SUCCESS: Found relevant result in chunk 2!
+  - SUCCESS: Found relevant result in chunk 2!
+  - SUCCESS: Found relevant result in chunk 2!
+  - SUCCESS: Found relevant result in chunk 2!
+  - SUCCESS: Found relevant result in chunk 3!
+  - SUCCESS: Found relevant result in chunk 3!
+  - SUCCESS: Found relevant result in chunk 3!
+  - SUCCESS: Found relevant result in chunk 3!
+  - SUCCESS: Found relevant result in chunk 3!
+  - SUCCESS: Found relevant result in chunk 4!
+  - SUCCESS: Found relevant result in chunk 4!
+  - SUCCESS: Found relevant result in chunk 4!
+Local job execution finished in 32.13s.
+Filtered results to be sent to RemoteLM: ["Max Planck's 1900 quantum hypothesis.", 'Albert Einstein proposed the photoelectric effect in 1905.', "Niels Bohr's contribution was the Bohr model of the atom, made in 1913.", 'Werner Heisenberg, 1925', 'David Hilbert, 1905', 'Max Planck proposed the quantum theory in 1900.', 'Photoelectric effect, 1905', 'Niels Bohr proposed a new model for the atom in 1913.', 'Werner Heisenberg, 1925', 'Werner Heisenberg, 1925', 'Max Planck, 1900', 'Photoelectric effect, 1905', 'Niels Bohr proposed the Bohr model in 1913.', 'Werner Heisenberg, 1925', 'Louis de Broglie, 1924', 'Max Planck developed the quantum theory of black-body radiation in 1900.', 'Werner Heisenberg, along with Max Born and Pascual Jordan, developed matrix mechanics in 1925.', 'Erwin Schrödinger developed wave mechanics in 1926.']
+
+--- Step 3: Job Aggregation & Synthesis (RemoteLM) ---
+
+>>> Querying RemoteLM (Manager)...
+<<< RemoteLM Response received in 2.98s
+
+--- FINAL ANSWER ---
+Here are the key contributions of Max Planck, Albert Einstein, and Niels Bohr to quantum mechanics, along with the years of their discoveries:
+
+### Max Planck
+- **Quantum Hypothesis (1900)**: Planck introduced the concept of quantization of energy, proposing that energy is emitted or absorbed in discrete units called "quanta."
+- **Quantum Theory of Black-Body Radiation (1900)**: He developed a theoretical framework to explain black-body radiation, which laid the groundwork for quantum mechanics.
+
+### Albert Einstein
+- **Photoelectric Effect (1905)**: Einstein proposed that light can be thought of as consisting of particles called photons, which can eject electrons from a material when they collide with it. This work provided crucial evidence for the quantum theory of light.
+
+### Niels Bohr
+- **Bohr Model of the Atom (1913)**: Bohr introduced a new model for the atom, which described electrons orbiting the nucleus in quantized energy levels. This model explained the spectral lines of hydrogen and was pivotal in the development of quantum theory.
+
+These contributions were foundational in the establishment of quantum mechanics as a significant field of physics.
+==================================================
+
+--- Performance & Results Report ---
+Total Workflow Duration: 43.54s
+
+Cost & Efficiency Analysis:
+  - Tokens processed by FREE LocalLM: ~286
+  - Tokens sent to EXPENSIVE RemoteLM API: ~113
+  - Token reduction for RemoteLM: 60.5%
+==================================================
