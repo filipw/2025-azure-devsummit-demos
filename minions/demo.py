@@ -150,6 +150,60 @@ def aggregate_and_synthesize(user_query: str, job_results: list) -> str:
     final_answer = query_remote_lm(messages)
     return final_answer
 
+def evaluate_response_quality(user_query: str, document: str, final_answer: str) -> tuple[int, str]:
+    print("\n--- Step 4: Response Quality Evaluation (RemoteLM) ---")
+    print("RemoteLM is evaluating the quality of the generated answer...")
+    
+    system_prompt = """You are an expert evaluator of AI-generated responses. Your task is to assess the quality of an answer given the original document, user query, and the generated response.
+
+Please evaluate the response on a scale of 1-5 where:
+1 = Very Poor (completely inaccurate or irrelevant)
+2 = Poor (mostly inaccurate with some relevant information)
+3 = Fair (some accuracy but missing key information or has notable errors)
+4 = Good (mostly accurate and complete with minor issues)
+5 = Excellent (highly accurate, complete, and well-structured)
+
+Consider these criteria:
+- Accuracy: Does the answer correctly reflect the information in the source document?
+- Completeness: Does it address all parts of the user's query?
+- Clarity: Is the answer well-organized and easy to understand?
+- Relevance: Does it stay focused on what was asked?
+
+Provide your evaluation in this exact format:
+Score: [1-5]
+Reasoning: [Brief explanation of your assessment]"""
+
+    user_prompt = f"""Original Document:
+{document}
+
+User Query: {user_query}
+
+Generated Answer:
+{final_answer}
+
+Please evaluate this response."""
+    
+    messages = [
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": user_prompt}
+    ]
+    
+    evaluation_response = query_remote_lm(messages, temperature=0.3)
+    
+    # Handle case where evaluation_response might be None
+    if evaluation_response is None:
+        return 0, "Error: No evaluation response received"
+    
+    # Extract score from response
+    try:
+        score_line = [line for line in evaluation_response.split('\n') if line.startswith('Score:')][0]
+        score = int(score_line.split(':')[1].strip())
+    except (IndexError, ValueError):
+        score = 0  # Default if parsing fails
+    
+    return score, evaluation_response
+
+
 def main():
     start_time = time.time()
     print("="*50)
@@ -169,14 +223,23 @@ def main():
         
     final_answer = aggregate_and_synthesize(user_query, results)
     
+    # Evaluate the response quality
+    evaluation_score, evaluation_details = evaluate_response_quality(user_query, QUANTUM_MECHANICS_HISTORY, final_answer)
+    
     total_duration = time.time() - start_time
     
     print("\n--- FINAL ANSWER ---")
     print(final_answer)
     print("="*50)
 
+    print("\n--- RESPONSE QUALITY EVALUATION ---")
+    print(f"Quality Score: {evaluation_score}/5")
+    print(f"Evaluation Details:\n{evaluation_details}")
+    print("="*50)
+
     local_tokens = len(QUANTUM_MECHANICS_HISTORY.split())
     remote_tokens_sent = len(" ".join(results).split())
+    
     print("\n--- Performance & Results Report ---")
     print(f"Total Workflow Duration: {total_duration:.2f}s")
     print("\nCost & Efficiency Analysis:")
@@ -188,6 +251,7 @@ def main():
     else:
         print("  - Token reduction for RemoteLM: 100.0%")
     print("\nAnswer Quality:")
+    print(f"  - AI Judge Score: {evaluation_score}/5")
     print("="*50)
 
 
