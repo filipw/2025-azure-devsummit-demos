@@ -1,0 +1,35 @@
+{"prompt": "Extract PII: 'The information is about Indiana Jones, PhD. His email is junior@uchicago.edu.'", "completion": "[{\"entity\": \"NAME\", \"value\": \"Indiana Jones, PhD\"}, {\"entity\": \"EMAIL_ADDRESS\", \"value\": \"junior@uchicago.edu\"}]"}
+{"prompt": "Extract PII: 'The mission briefing is at 0800 hours.'", "completion": "[]"}
+{"prompt": "Extract PII: 'The package should be sent to Dr. Henry Jones, Sr.'", "completion": "[{\"entity\": \"NAME\", \"value\": \"Dr. Henry Jones, Sr.\"}]"}
+{"prompt": "Extract PII: 'The artifact is located at Zurich, Switzerland.'", "completion": "[{\"entity\": \"ADDRESS\", \"value\": \"Zurich, Switzerland\"}]"}
+{"prompt": "Extract PII: 'His phone number is 1-212-555-7890.'", "completion": "[{\"entity\": \"PHONE_NUMBER\", \"value\": \"1-212-555-7890\"}]"}
+{"prompt": "Extract PII: 'This is a test case with no personal information.'", "completion": "[]"}
+{"prompt": "Extract PII: 'The client is Rick Blaine. His address is Rick's Café Américain, Casablanca.'", "completion": "[{\"entity\": \"NAME\", \"value\": \"Rick Blaine\"}, {\"entity\": \"ADDRESS\", \"value\": \"Rick's Café Américain, Casablanca\"}]"}
+{"prompt": "Extract PII: 'Ilsa Lund is also involved in the matter.'", "completion": "[{\"entity\": \"NAME\", \"value\": \"Ilsa Lund\"}]"}
+{"prompt": "Extract PII: 'This is the beginning of a beautiful friendship.'", "completion": "[]"}
+{"prompt": "Extract PII: 'Agent 007, James Bond, can be reached via MI6.'", "completion": "[{\"entity\": \"NAME\", \"value\": \"James Bond\"}]"}
+{"prompt": "Extract PII: 'Please send the documents to M.'", "completion": "[{\"entity\": \"NAME\", \"value\": \"M\"}]"}
+{"prompt": "Extract PII: 'The new IT contact is q@mi6.gov.uk.'", "completion": "[{\"entity\": \"EMAIL_ADDRESS\", \"value\": \"q@mi6.gov.uk\"}]"}
+{"prompt": "Extract PII: 'The user is George Smiley.'", "completion": "[{\"entity\": \"NAME\", \"value\": \"George Smiley\"}]"}
+{"prompt": "Extract PII: 'The system has been updated successfully.'", "completion": "[]"}
+{"prompt": "Extract PII: 'For Dorothy Gale, send mail to The Gale Farm, Kansas, USA.'", "completion": "[{\"entity\": \"NAME\", \"value\": \"Dorothy Gale\"}, {\"entity\": \"ADDRESS\", \"value\": \"The Gale Farm, Kansas, USA\"}]"}
+{"prompt": "Extract PII: 'The Scarecrow needs a brain.'", "completion": "[{\"entity\": \"NAME\", \"value\": \"The Scarecrow\"}]"}
+{"prompt": "Extract PII: 'The Wizard of Oz lives in the Emerald City.'", "completion": "[{\"entity\": \"NAME\", \"value\": \"The Wizard of Oz\"}, {\"entity\": \"ADDRESS\", \"value\": \"Emerald City\"}]"}
+{"prompt": "Extract PII: 'Please approve the pull request.'", "completion": "[]"}
+{"prompt": "Extract PII: 'The contact is Atticus Finch.'", "completion": "[{\"entity\": \"NAME\", \"value\": \"Atticus Finch\"}]"}
+{"prompt": "Extract PII: 'The incident involved Boo Radley.'", "completion": "[{\"entity\": \"NAME\", \"value\": \"Boo Radley\"}]"}
+{"prompt": "Extract PII: 'The application from a John Smith with email j.smith@example.net and number 555-555-5555 was approved.'", "completion": "[{\"entity\": \"NAME\", \"value\": \"John Smith\"}, {\"entity\": \"EMAIL_ADDRESS\", \"value\": \"j.smith@example.net\"}, {\"entity\": \"PHONE_NUMBER\", \"value\": \"555-555-5555\"}]"}
+{"prompt": "Extract PII: 'My email is general.kenobi@jedi-council.org.'", "completion": "[{\"entity\": \"EMAIL_ADDRESS\", \"value\": \"general.kenobi@jedi-council.org\"}]"}
+{"prompt": "Extract PII: 'The investigation focuses on Count Dooku.'", "completion": "[{\"entity\": \"NAME\", \"value\": \"Count Dooku\"}]"}
+{"prompt": "Extract PII: 'The logistics are finalized.'", "completion": "[]"}
+{"prompt": "Extract PII: 'Her address is 10 Cloverfield Lane.'", "completion": "[{\"entity\": \"ADDRESS\", \"value\": \"10 Cloverfield Lane\"}]"}
+{"prompt": "Extract PII: 'The patient's name is Patrick Bateman.'", "completion": "[{\"entity\": \"NAME\", \"value\": \"Patrick Bateman\"}]"}
+{"prompt": "Extract PII: 'The report from Elizabeth Bennet is on your desk.'", "completion": "[{\"entity\": \"NAME\", \"value\": \"Elizabeth Bennet\"}]"}
+{"prompt": "Extract PII: 'Mr. Darcy's estate is in Pemberley.'", "completion": "[{\"entity\": \"NAME\", \"value\": \"Mr. Darcy\"}, {\"entity\": \"ADDRESS\", \"value\": \"Pemberley\"}]"}
+{"prompt": "Extract PII: 'Nothing to report.'", "completion": "[]"}
+{"prompt": "Extract PII: 'User: Ripley8. Address: The Auriga. Phone: Not Available.'", "completion": "[{\"entity\": \"NAME\", \"value\": \"Ripley8\"}, {\"entity\": \"ADDRESS\", \"value\": \"The Auriga\"}]"}
+{"prompt": "Extract PII: 'My number is 555-1212.'", "completion": "[{\"entity\": \"PHONE_NUMBER\", \"value\": \"555-1212\"}]"}
+{"prompt": "Extract PII: 'Contact me at sean.o'connor@email.ie.'", "completion": "[{\"entity\": \"EMAIL_ADDRESS\", \"value\": \"sean.o'connor@email.ie\"}]"}
+{"prompt": "Extract PII: 'The serial number is 123-456-789.'", "completion": "[]"}
+{"prompt": "Extract PII: 'The meeting is with Professor Plum and Mrs. White.'", "completion": "[{\"entity\": \"NAME\", \"value\": \"Professor Plum\"}, {\"entity\": \"NAME\", \"value\": \"Mrs. White\"}]"}
+{"prompt": "Extract PII: 'Call +49 (176) 12345678 for details.'", "completion": "[{\"entity\": \"PHONE_NUMBER\", \"value\": \"+49 (176) 12345678\"}]"}

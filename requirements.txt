@@ -1,5 +1,9 @@
 azure-ai-inference
 ipykernel
 python-dotenv
-mlx-lm
+mlx-lm; sys_platform == "darwin"
 openai
+transformers
+azure-ai-ml
+azure-identity
+ipykernel

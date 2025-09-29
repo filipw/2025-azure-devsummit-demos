@@ -419,3 +419,4 @@ FodyWeavers.xsd
 fine-tuning/adapters/
 .venv/
 .DS_Store
+fine-tuning-azure-ml/batch_results/
