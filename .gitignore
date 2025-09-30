@@ -420,3 +420,7 @@ fine-tuning/adapters/
 .venv/
 .DS_Store
 fine-tuning-azure-ml/batch_results/
+fine-tuning/fused_model/
+.build/
+.swiftpm/
+strathweb-phi-engine-samples/swift/SampleExecutable/Lib/
