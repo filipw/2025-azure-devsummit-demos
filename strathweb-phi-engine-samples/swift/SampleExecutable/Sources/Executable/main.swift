@@ -14,21 +14,15 @@ let model = try modelBuilder.build(cacheDir: (sourceFileDir as NSString).appendi
 
 let context = ConversationContext(messages: [], systemInstruction: "")
 let prompts = [
-    "Play alt rock",
-    "too loud",
-    "Skip this",
-    "Next one please",
-    "Change song",
-    "play Comfortably Numb",
-    "Go to lst song",
-    "What's the time?",
-    "pause it",
-    "make it quieter",
-    "What should I eat?",
-    "off",
-    "Start focus music",
-    "unmute",
-    "What's your favorite color?",
+    "Boost the volume",
+    "What's your name again?",
+    "Turn up",
+    "Lower it",
+    "Last song please",
+    "Skip",
+    "Stop all",
+    "Audio enable",
+    "Play Wish You Were Here"
 ]
 
 let inferenceOptionsBuilder = InferenceOptionsBuilder()
