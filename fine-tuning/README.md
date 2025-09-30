@@ -165,7 +165,7 @@ Peak memory: 7.868 GB
 ## 5. Merge the adapter into the model
 
 ```
-mlx_lm.fuse --model microsoft/Phi-3.5-mini-4k-instruct
+mlx_lm.fuse --model microsoft/Phi-3.5-mini-instruct
 ```
 
 This creates a fused safe tensors model inside `./fused_model` folder. From there it can be used directly with any ML framework that supports safe tensors, or it can be subject to quantization or other optimizations. 

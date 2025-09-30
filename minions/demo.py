@@ -13,7 +13,16 @@ disable_progress_bars()
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
 LOCAL_MODEL_PATH = "mlx-community/Phi-4-mini-instruct-8bit"
-REMOTE_MODEL_DEPLOYMENT = os.getenv("AZURE_OPENAI_DEPLOYMENT_NAME")
+
+def require_env(name: str) -> str:
+    val = os.getenv(name)
+    if not val:
+        raise RuntimeError(f"Missing required environment variable: {name}")
+    return val
+
+AOI_MODEL_DEPLOYMENT = require_env("AZURE_OPENAI_DEPLOYMENT_NAME")
+AOI_ENDPOINT = require_env("AZURE_OPENAI_ENDPOINT")
+AOI_KEY = require_env("AZURE_OPENAI_API_KEY")
 
 QUANTUM_MECHANICS_HISTORY = """
 The history of quantum mechanics is a fundamental part of the history of modern physics. The story began with Max Planck's 1900 quantum hypothesis that any energy-radiating atomic system can theoretically be divided into a number of discrete "energy elements" (quanta). This was a revolutionary idea that departed from classical physics. Planck devised this hypothesis to explain the observed frequency distribution of energy emitted by a black body.
@@ -45,18 +54,18 @@ def query_remote_lm(messages: list, temperature: float = 0.1):
     print("\n>>> Querying RemoteLM (Manager)...")
     client = AzureOpenAI(
         api_version="2024-02-01",
-        azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
-        api_key=os.getenv("AZURE_OPENAI_API_KEY"),
+        azure_endpoint=AOI_ENDPOINT,
+        api_key=AOI_KEY,
     )
     start_time = time.time()
     response = client.chat.completions.create(
-        model=REMOTE_MODEL_DEPLOYMENT,
+        model=AOI_MODEL_DEPLOYMENT,
         messages=messages,
         temperature=temperature,
         max_tokens=500
     )
     duration = time.time() - start_time
-    content = response.choices[0].message.content
+    content = response.choices[0].message.content or ""
     print(f"<<< RemoteLM Response received in {duration:.2f}s")
     return content
 
