@@ -6,7 +6,7 @@ from mlx_lm.generate import generate
 from dotenv import load_dotenv
 from huggingface_hub.utils.tqdm import disable_progress_bars
 
-load_dotenv()
+load_dotenv("../.env")
 
 # suppress noisy hugging face stuff
 disable_progress_bars()
@@ -21,8 +21,8 @@ def require_env(name: str) -> str:
     return val
 
 AOI_MODEL_DEPLOYMENT = require_env("AZURE_OPENAI_DEPLOYMENT_NAME")
-AOI_ENDPOINT = require_env("AZURE_OPENAI_ENDPOINT")
-AOI_KEY = require_env("AZURE_OPENAI_API_KEY")
+AOI_RESOURCE = require_env("AZURE_OPENAI_RESOURCE")
+AOI_KEY = require_env("AZURE_OPENAI_KEY")
 
 QUANTUM_MECHANICS_HISTORY = """
 The history of quantum mechanics is a fundamental part of the history of modern physics. The story began with Max Planck's 1900 quantum hypothesis that any energy-radiating atomic system can theoretically be divided into a number of discrete "energy elements" (quanta). This was a revolutionary idea that departed from classical physics. Planck devised this hypothesis to explain the observed frequency distribution of energy emitted by a black body.
@@ -53,8 +53,8 @@ Answer:"""
 def query_remote_lm(messages: list, temperature: float = 0.1):
     print("\n>>> Querying RemoteLM (Manager)...")
     client = AzureOpenAI(
-        api_version="2024-02-01",
-        azure_endpoint=AOI_ENDPOINT,
+        api_version="2024-06-01",
+        azure_endpoint=f"https://{AOI_RESOURCE}.openai.azure.com",
         api_key=AOI_KEY,
     )
     start_time = time.time()
@@ -265,7 +265,4 @@ def main():
 
 
 if __name__ == "__main__":
-    if not all([os.getenv("AZURE_OPENAI_ENDPOINT"), os.getenv("AZURE_OPENAI_API_KEY"), os.getenv("AZURE_OPENAI_DEPLOYMENT_NAME")]):
-        print("ERROR: Please set the required Azure OpenAI environment variables.")
-    else:
-        main()
+    main()

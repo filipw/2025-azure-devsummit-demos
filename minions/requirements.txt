@@ -1,3 +1,0 @@
-mlx-lm
-openai
-python-dotenv
