@@ -7,3 +7,4 @@ transformers
 azure-ai-ml
 azure-identity
 ipykernel
+azure-ai-inference
