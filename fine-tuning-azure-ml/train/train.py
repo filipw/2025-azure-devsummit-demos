@@ -82,6 +82,7 @@ class SimpleCausalCollator:
 
 def main():
     parser = argparse.ArgumentParser()
+    parser.add_argument("--model_id", type=str, required=True, help="ID of the model to fine-tune.")
     parser.add_argument("--train_data", type=str, required=True, help="Path to the training data (jsonl).")
     parser.add_argument("--eval_data", type=str, required=True, help="Path to the evaluation data (jsonl).")
     parser.add_argument("--model_output", type=str, required=True, help="Path to save the trained model.")
@@ -101,7 +102,7 @@ def main():
     eval_dataset = load_dataset("json", data_files=args.eval_data, split="train")
 
     # 2) Model/tokenizer
-    model_id = "microsoft/Phi-4-mini-instruct"
+    model_id = args.model_id
     print(f"Loading base model: {model_id}")
     model = AutoModelForCausalLM.from_pretrained(
         model_id,
