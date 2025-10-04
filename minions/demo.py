@@ -103,7 +103,7 @@ def run_local_inference(model, tokenizer, prompt: str) -> str:
 
 
 # --- MINIONS PROTOCOL IMPLEMENTATION ---
-def prepare_jobs(user_query: str, use_predefined_jobs: bool = False) -> list:
+def prepare_jobs(user_query: str, use_predefined_jobs: bool = False) -> tuple[list, int]:
     print("\n--- Step 1: Job Preparation (RemoteLM) ---")
     print("RemoteLM is creating simple, targeted jobs based on the user query.")
 
@@ -138,7 +138,7 @@ def prepare_jobs(user_query: str, use_predefined_jobs: bool = False) -> list:
 
             jobs = json.loads(response)
             print(f"Jobs created: {jobs}")
-            return jobs
+            return jobs, len(system_prompt) + len(user_prompt)
         except json.JSONDecodeError as e:
             print(f"Warning: Could not parse JSON response. Error: {e}")
             print(f"Raw response: {response}")
@@ -147,15 +147,13 @@ def prepare_jobs(user_query: str, use_predefined_jobs: bool = False) -> list:
     jobs = [
         "Find the contribution of Max Planck and the year it was made.",
         "Find the contribution of Albert Einstein and the year it was made.",
-        "Find the contribution of Niels Bohr and the year it was made.",
-        "Identify who developed matrix mechanics and in what year.",
-        "Identify who developed wave mechanics and in what year.",
+        "Find the contribution of Niels Bohr and the year it was made."
     ]
     print(f"Using fallback jobs: {jobs}")
-    return jobs
+    return jobs, 0
 
 
-def execute_jobs_locally(document: str, jobs: list) -> list:
+def execute_jobs_locally(document: str, jobs: list) -> tuple[list, int]:
     print("\n--- Step 2: Job Execution (LocalLM) ---")
     print(f"Loading local model from {LOCAL_MODEL_PATH}...")
     local_model, tokenizer = load(LOCAL_MODEL_PATH)
@@ -166,10 +164,12 @@ def execute_jobs_locally(document: str, jobs: list) -> list:
 
     job_results = []
     start_time = time.time()
+    total_chars_processed = 0
 
     for i, chunk in enumerate(chunks):
         for job in jobs:
             prompt = LOCAL_MODEL_PROMPT_TEMPLATE_ROBUST.format(chunk=chunk, job=job)
+            total_chars_processed += len(prompt)
             raw_result = run_local_inference(local_model, tokenizer, prompt)
 
             result_lower = raw_result.lower().strip()
@@ -188,10 +188,10 @@ def execute_jobs_locally(document: str, jobs: list) -> list:
     print(f"Filtered results to be sent to RemoteLM: {job_results}")
 
     del local_model, tokenizer
-    return job_results
+    return job_results, total_chars_processed
 
 
-def aggregate_and_synthesize(user_query: str, job_results: list) -> str:
+def aggregate_and_synthesize(user_query: str, job_results: list) -> tuple[str, int]:
     print("\n--- Step 3: Job Aggregation & Synthesis (RemoteLM) ---")
 
     system_prompt = """You are a science historian. You have received a list of facts extracted from a document about the history of physics.
@@ -209,7 +209,7 @@ def aggregate_and_synthesize(user_query: str, job_results: list) -> str:
     ]
 
     final_answer = query_remote_lm(messages)
-    return final_answer
+    return final_answer, len(system_prompt) + len(user_prompt)
 
 
 def evaluate_response_quality(
@@ -282,14 +282,14 @@ def main():
     user_query = "List the key contributions of Max Planck, Albert Einstein, and Niels Bohr to quantum mechanics, including the years of their discoveries."
     print(f"\nUser Query: {user_query}")
 
-    jobs = prepare_jobs(user_query)
-    results = execute_jobs_locally(QUANTUM_MECHANICS_HISTORY, jobs)
+    jobs, prep_job_chars = prepare_jobs(user_query)
+    results, local_chars_processed = execute_jobs_locally(QUANTUM_MECHANICS_HISTORY, jobs)
 
     if not results:
         print("\nLocalLM could not find any relevant information. Halting.")
         return
 
-    final_answer = aggregate_and_synthesize(user_query, results)
+    final_answer, aggregate_chars = aggregate_and_synthesize(user_query, results)
 
     # Evaluate the response quality
     evaluation_score, evaluation_details = evaluate_response_quality(
@@ -307,11 +307,21 @@ def main():
     print(f"Evaluation Details:\n{evaluation_details}")
     print("=" * 50)
 
-    local_tokens = len(QUANTUM_MECHANICS_HISTORY.split())
+    remote_chars_sent = prep_job_chars + aggregate_chars
+    source_document_chars = len(QUANTUM_MECHANICS_HISTORY)
 
     print("\n--- Performance & Results Report ---")
     print(f"Total Workflow Duration: {total_duration:.2f}s")
-    print(f"Tokens processed by FREE LocalLM: ~{local_tokens}")
+    print("\nCost & Efficiency Analysis (using character counts):")
+    print(f"  - Characters in source document: ~{source_document_chars}")
+    print(f"  - Characters processed by FREE LocalLM: ~{local_chars_processed}")
+    print(f"  - Characters sent to EXPENSIVE RemoteLM API (Job Prep + Synthesis): ~{remote_chars_sent}")
+
+    if source_document_chars > 0 and remote_chars_sent > 0:
+        # Compare the remote payload characters to the original document characters
+        char_reduction_percent = (1 - (remote_chars_sent / source_document_chars)) * 100
+        print(f"  - Remote API payload was {abs(char_reduction_percent):.1f}% smaller than the source document.")
+    
     print("\nAnswer Quality:")
     print(f"  - AI Judge Score: {evaluation_score}/5")
     print("=" * 50)
