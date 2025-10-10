@@ -15,29 +15,18 @@ os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
 LOCAL_MODEL_PATH = "mlx-community/Phi-4-mini-instruct-8bit"
 
-
 def require_env(name: str) -> str:
     val = os.getenv(name)
     if not val:
         raise RuntimeError(f"Missing required environment variable: {name}")
     return val
 
-
 AOI_MODEL_DEPLOYMENT = require_env("AZURE_OPENAI_DEPLOYMENT_NAME")
 AOI_RESOURCE = require_env("AZURE_OPENAI_RESOURCE")
 AOI_KEY = require_env("AZURE_OPENAI_KEY")
 
-QUANTUM_MECHANICS_HISTORY = """
-The history of quantum mechanics is a fundamental part of the history of modern physics. The story began with Max Planck's 1900 quantum hypothesis that any energy-radiating atomic system can theoretically be divided into a number of discrete "energy elements" (quanta). This was a revolutionary idea that departed from classical physics. Planck devised this hypothesis to explain the observed frequency distribution of energy emitted by a black body.
-
-Building on this, Albert Einstein in 1905 proposed that light itself is not a continuous wave, but consists of discrete quantum particles, which were later named photons. This theory helped explain the photoelectric effect, where shining light on certain materials can eject electrons. This was a pivotal moment, suggesting a dual wave-particle nature for light.
-
-The next major leap came from Niels Bohr, who in 1913 proposed a new model for the atom. In the Bohr model, electrons travel in discrete, quantized orbits around the nucleus. He theorized that electrons could jump from one orbit to another, but could not exist in the space between orbits. This model successfully explained the spectral lines of the hydrogen atom.
-
-Later, Louis de Broglie in 1924 put forward his hypothesis of matter waves, stating that all matter, not just light, exhibits wave-like properties. This concept was central to the development of wave mechanics. This was confirmed by experiments showing electron diffraction.
-
-The full mathematical framework of quantum mechanics was developed in the mid-1920s. In 1925, Werner Heisenberg, along with Max Born and Pascual Jordan, developed matrix mechanics. Independently, Erwin Schrödinger developed wave mechanics and the non-relativistic Schrödinger equation in 1926, which described the evolution of a quantum system's wave function over time. Schrödinger subsequently showed that the two approaches were equivalent.
-"""
+with open("quantum_mechanics_history.txt", "r", encoding="utf-8") as f:
+    QUANTUM_MECHANICS_HISTORY = f.read()
 
 LOCAL_MODEL_PROMPT_TEMPLATE_ROBUST = """You are a meticulous and literal fact-checker. Your process is a strict two-step evaluation:
 1.  First, analyze the 'Context' to determine if it contains any information that can directly answer the 'Task'.
@@ -279,7 +268,7 @@ def main():
     print("=" * 50)
 
     # user query
-    user_query = "List the key contributions of Max Planck, Albert Einstein, and Niels Bohr to quantum mechanics, including the years of their discoveries."
+    user_query = "what did Planck, Einstein, and Bohr contribute to quantum mechanics?"
     print(f"\nUser Query: {user_query}")
 
     jobs, prep_job_chars = prepare_jobs(user_query)
@@ -308,20 +297,13 @@ def main():
     print("=" * 50)
 
     remote_chars_sent = prep_job_chars + aggregate_chars
-    source_document_chars = len(QUANTUM_MECHANICS_HISTORY)
 
     print("\n--- Performance & Results Report ---")
     print(f"Total Workflow Duration: {total_duration:.2f}s")
     print("\nCost & Efficiency Analysis (using character counts):")
-    print(f"  - Characters in source document: ~{source_document_chars}")
     print(f"  - Characters processed by FREE LocalLM: ~{local_chars_processed}")
     print(f"  - Characters sent to EXPENSIVE RemoteLM API (Job Prep + Synthesis): ~{remote_chars_sent}")
 
-    if source_document_chars > 0 and remote_chars_sent > 0:
-        # Compare the remote payload characters to the original document characters
-        char_reduction_percent = (1 - (remote_chars_sent / source_document_chars)) * 100
-        print(f"  - Remote API payload was {abs(char_reduction_percent):.1f}% smaller than the source document.")
-    
     print("\nAnswer Quality:")
     print(f"  - AI Judge Score: {evaluation_score}/5")
     print("=" * 50)
