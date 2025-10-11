@@ -11,13 +11,11 @@ from huggingface_hub.utils.tqdm import disable_progress_bars
 disable_progress_bars()
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
-def load_validation_data(file_path: str, limit: int) -> List[Dict[str, str]]:
+def load_validation_data(file_path: str) -> List[Dict[str, str]]:
     examples = []
-    print(f"Loading {limit} validation examples...")
+    print("Loading validation examples...")
     with open(file_path, 'r') as f:
         for i, line in enumerate(f):
-            if i >= limit:
-                break
             data = json.loads(line.replace('*', '"'))
             text = data["text"]
             user_part = text.split('<|user|>')[1].split('<|end|>')[0]
@@ -104,8 +102,7 @@ def main():
     VALIDATION_FILE = "data/valid.jsonl"
     
     print("=== Starting Validation ===")
-    # we can set this to a larger value to test more examples
-    validation_data = load_validation_data(VALIDATION_FILE, limit=25)
+    validation_data = load_validation_data(VALIDATION_FILE)
     
     finetuned_results = evaluate_model(MODEL_PATH, ADAPTER_PATH, validation_data, "Fine-tuned Model")
     print("\n" + "="*50 + "\n")

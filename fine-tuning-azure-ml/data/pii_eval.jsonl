@@ -13,7 +13,7 @@
 {"prompt": "Extract PII: 'The user is George Smiley.'", "completion": "[{\"entity\": \"NAME\", \"value\": \"George Smiley\"}]"}
 {"prompt": "Extract PII: 'The system has been updated successfully.'", "completion": "[]"}
 {"prompt": "Extract PII: 'For Dorothy Gale, send mail to The Gale Farm, Kansas, USA.'", "completion": "[{\"entity\": \"NAME\", \"value\": \"Dorothy Gale\"}, {\"entity\": \"ADDRESS\", \"value\": \"The Gale Farm, Kansas, USA\"}]"}
-{"prompt": "Extract PII: 'The Scarecrow needs a brain.'", "completion": "[{\"entity\": \"NAME\", \"value\": \"The Scarecrow\"}]"}
+{"prompt": "Extract PII: 'The Scarecrow needs a brain.'", "completion": "[]"}
 {"prompt": "Extract PII: 'The Wizard of Oz lives in the Emerald City.'", "completion": "[{\"entity\": \"NAME\", \"value\": \"The Wizard of Oz\"}, {\"entity\": \"ADDRESS\", \"value\": \"Emerald City\"}]"}
 {"prompt": "Extract PII: 'Please approve the pull request.'", "completion": "[]"}
 {"prompt": "Extract PII: 'The contact is Atticus Finch.'", "completion": "[{\"entity\": \"NAME\", \"value\": \"Atticus Finch\"}]"}
