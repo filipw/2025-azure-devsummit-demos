@@ -27,3 +27,5 @@ MAX_NODES=2
 ENDPOINT_NAME=
 DEPLOYMENT_NAME=
 ```
+
+The demos that use a local model are written with [MLX](https://opensource.apple.com/projects/mlx/) and require an Apple Silicon device.
